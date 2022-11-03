@@ -89,16 +89,19 @@ export default function RegisterForm({ setVisible }) {
   const [loading, setLoading] = useState(false);
   const registerSubmit = async () => {
     try {
-      const { data } = await axios.post("http://localhost:8000/register", {
-        first_name,
-        last_name,
-        email,
-        password,
-        bYear,
-        bMonth,
-        bDay,
-        gender,
-      });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/register`,
+        {
+          first_name,
+          last_name,
+          email,
+          password,
+          bYear,
+          bMonth,
+          bDay,
+          gender,
+        }
+      );
       setError("");
       setSuccess(data.message);
       const { message, ...rest } = data;
