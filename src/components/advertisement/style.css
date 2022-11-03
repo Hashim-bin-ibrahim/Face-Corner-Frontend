@@ -1,0 +1,355 @@
+.ads_wraps {
+  position: fixed;
+  top: 0;
+  height: 56px;
+  z-index: 99;
+  background:#001935;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: var(--color-primary);
+}
+
+.ads_wrap_1 {
+  width: 15vw;
+  padding: 5px;
+  background: #00273d;
+  color: white;
+}
+
+/* .ads_wrap_1 {
+ background: #001935;
+} */
+
+
+
+.ads_wrap_2 {
+  padding: 5px;
+  display: flex;
+  background: #001935;
+  width: 85vw;
+  color: black;
+}
+
+.left_header {
+  background-color:001935 ;
+  width: 100%;
+  row-gap: 5px;
+  margin-bottom: 10px;
+}
+.left_header span {
+  font-size: 20px;
+}
+
+.circle {
+  align-items: center;
+  background-color: black;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 40px;
+}
+
+.circle img {
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid black;
+  position: absolute;
+  object-fit: cover;
+}
+
+.user_data {
+  width: 98%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  height: auto;
+  padding: 4px;
+  border: 2px solid black;
+}
+
+.user_data span {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0px 5px;
+}
+/* .campaign_btn {
+  height: auto;
+  width: auto;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: gray;
+  opacity: 0.6;
+} */
+
+
+.campaign_btn button {
+  background: #001935;
+  color: white;
+  border: none;
+  font-size: 18px;
+  width: 98%;
+  border-radius: 10px;
+  padding: 10px 2px;
+  margin-top: 10px;
+}
+
+/*-----------------create Campaign starts----------------*/
+
+.create_ad_wraps {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-primary);
+  box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
+    inset 0 0 0 1px var(--shadow-inset);
+  min-height: auto;
+  min-width: 500px;
+  border-radius: 10px;
+}
+.ad_headers {
+  border-radius: 10px 10px 0px 0px;
+
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  text-align: center;
+  top: 0;
+  color: black;
+  background-color: aliceblue;
+  opacity: 0.5;
+}
+
+.ads_header_txt {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  font-weight: 600;
+  padding-top: 15px;
+}
+
+.select_campaign_ad_wrap {
+  /* background-color: #aac9ff; */
+  bottom: 0;
+  margin-top: 59px;
+  max-width: 600px;
+  display: flex;
+}
+
+.select_campaign_left {
+  width: 30vw;
+  height: auto;
+  /* background-color: aqua; */
+  flex-direction: column;
+  padding: 5px;
+}
+
+.input_field {
+  display: flex;
+  gap: 10px;
+
+  cursor: pointer;
+}
+.input_field:hover {
+  background-color: #3498db;
+  border-radius: 5px;
+}
+
+.radio_btn {
+  margin-top: 8px;
+
+  height: 20px;
+  width: 20px;
+}
+
+.radio_contant {
+  height: auto;
+  width: 120px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.footer_submit {
+  border-top: 1px solid #202020;
+  padding-top: 25px;
+  border-radius: 0px 0px 10px 10px;
+
+  height: 50px;
+  width: auto;
+  background-color: white;
+}
+.footer_button {
+  position: relative;
+  margin-right: 0;
+  bottom: 10px;
+
+  float: right;
+}
+.footer_button button {
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-right: 12px;
+  background-color: #3498db;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.select_campaign_right {
+  background-color: white;
+  width: 60vw;
+  align-items: center;
+  height: auto;
+}
+
+.select_campaign_right span {
+  color: gray;
+  font-size: 12px;
+}
+
+.select_campaign_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.ads_preview_image {
+  height: 135px;
+  width: 135px;
+}
+
+.more_details_wraps {
+  position: fixed;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-primary);
+  box-shadow: 0 12px 28px 0 var(--shadow-1), 0 2px 4px 0 var(--shadow-2),
+    inset 0 0 0 1px var(--shadow-inset);
+  max-height: 580px;
+  overflow: scroll;
+  width: 500px;
+  border-radius: 10px;
+}
+.more_details_wrap {
+  align-items: center;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+.campaign_name {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  background: #f5f5f5;
+  padding: 8px 8px 12px 8px;
+  border-radius: 6px;
+  margin: 10px 0;
+}
+.headers_wrap h4 {
+  text-align: center;
+  padding: 10px;
+}
+.campaign_name h4 {
+  margin-bottom: 7px;
+}
+
+.campaign_name input {
+  padding: 6px;
+  width: 75%;
+  border: 1px solid #7c6b6b;
+  border-radius: 7px;
+}
+
+.budget_wraps {
+  padding: 9px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  background: #f5f5f5;
+}
+.budget_wrap {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.budget_wrap input {
+  padding: 5px;
+  border-radius: 7px;
+  border: 1px solid;
+}
+
+.schedule_wraps {
+  margin-top: 5px;
+}
+.schedule_wraps h3 {
+  font-size: 18px;
+  padding: 10px 0px;
+  font-family: unset;
+}
+
+.start_date {
+  margin-top: 20px;
+}
+.start_date input {
+  margin: 10px 0px;
+  border-radius: 5px;
+  padding: 7px;
+  border: 1px solid #f5f5f5;
+}
+.end_date input {
+  margin: 10px 0px;
+  border-radius: 1px solid #f5f5f5;
+  border-radius: 5px;
+  padding: 7px;
+  border: 1px solid #f5f5f5;
+}
+
+.footer_submit {
+  margin-bottom: 22px;
+  color: #7c7c7c;
+  font-size: 10px;
+}
+.alert_message {
+  display: flex;
+  justify-content: center;
+}
+
+.alert_message h3 {
+  font-size: 15px;
+  color: #ff2603;
+  font-family: monospace;
+}
+
+.total_wrap {
+  background: #f5f5f5;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 9px 0px 16px 0px;
+}
+
+.more_details_wraps::-webkit-scrollbar {
+  width: 4px; /* width of the entire scrollbar */
+}
+
+.more_details_wraps::-webkit-scrollbar-track {
+  background: #f5f4f4; /* color of the tracking area */
+}
+
+.more_details_wraps::-webkit-scrollbar-thumb {
+  background-color: #707070; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
+
+/*-----------------create Campaign ends----------------*/
