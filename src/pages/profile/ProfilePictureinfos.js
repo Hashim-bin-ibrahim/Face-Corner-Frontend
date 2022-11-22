@@ -1,29 +1,32 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ProfilePicture from "../../components/ProfilePicture";
-import useClickOutide from "../../helpers/clickOutside";
-
-export default function ProfilePictureinfos({
+import Friendship from "./Friendship";
+export default function ProfielPictureInfos({
   profile,
   visitor,
-  show,
-  setShow,
+  photos,
+  othername,
 }) {
-  console.log("profile component rendrs................");
+  const [show, setShow] = useState(false);
+  const pRef = useRef(null);
   return (
     <div className="profile_img_wrap">
-      {show && <ProfilePicture setShow={setShow} />}
+      {show && <ProfilePicture setShow={setShow} pRef={pRef} photos={photos} />}
       <div className="profile_w_left">
-        <div className="profile_w_img" onClick={() => setShow((prev) => !prev)}>
+        <div className="profile_w_img">
           <div
             className="profile_w_bg"
+            ref={pRef}
             style={{
               backgroundSize: "cover",
               backgroundImage: `url(${profile.picture})`,
             }}
           ></div>
           {!visitor && (
-            <div className="profile_circle hover1">
+            <div
+              className="profile_circle hover1"
+              onClick={() => setShow(true)}
+            >
               <i className="camera_filled_icon"></i>
             </div>
           )}
@@ -31,14 +34,14 @@ export default function ProfilePictureinfos({
         <div className="profile_w_col">
           <div className="profile_name">
             {profile.first_name} {profile.last_name}
-            {/* <div className="othername">Othername</div> */}
+            <div className="othername">{othername && `(${othername})`}</div>
           </div>
           <div className="profile_friend_count"></div>
           <div className="profile_friend_imgs"></div>
         </div>
       </div>
       {visitor ? (
-        ""
+        <Friendship friendshipp={profile?.friendship} profileid={profile._id} />
       ) : (
         <div className="profile_w_right">
           <div className="blue_btn">

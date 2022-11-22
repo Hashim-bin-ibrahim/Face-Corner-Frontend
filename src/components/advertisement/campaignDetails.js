@@ -152,7 +152,7 @@ export default function CampaignDetails({
       }
     } else if (text) {
       setLoading(true);
-      // storying data to database if it  text only...
+      // storing data to database if it  text only...
 
       const response = await createPost(
         null,

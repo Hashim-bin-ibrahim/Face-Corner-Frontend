@@ -6,6 +6,8 @@ import DateOfBirth from "./DateOfBirth";
 import GenderSelect from "./GenderSelect";
 import MoonLoader from "react-spinners/MoonLoader";
 import axios from "axios";
+import PulseLoader from "react-spinners/PulseLoader";
+
 import { useDispatch } from "react-redux";
 import cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
@@ -210,7 +212,9 @@ export default function RegisterForm({ setVisible }) {
               />
 
               <div className="reg_btn_wrapper">
-                <button className="blue_btn open_signup">Sign Up</button>
+                <button className="blue_btn open_signup" disabled={loading}>
+                  {loading ? <PulseLoader color="#fff" size={5} /> : "Sign Up"}
+                </button>
               </div>
               <MoonLoader color="blue" loading={loading} size={30} />
               {error && <div className="error_text">{error}</div>}

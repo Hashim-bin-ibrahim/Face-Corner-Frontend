@@ -111,10 +111,11 @@ export const left = [
   //   text: "Recent ad activity",
   //   img: "recentad",
   // },
-  // {
-  //   text: "Weather",
-  //   img: "weather",
-  // },
+  {
+    text: "Weather",
+    img: "weather",
+    linkText: "/weather",
+  },
 ];
 export const stories = [
   {

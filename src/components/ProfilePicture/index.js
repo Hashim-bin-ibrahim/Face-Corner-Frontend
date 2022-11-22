@@ -1,8 +1,12 @@
 import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import useClickOutide from "../../helpers/clickOutside";
 import "./style.css";
 import UpdateProfilePicture from "./UpdateProfilePicture";
-export default function ProfilePicture({ setShow }) {
+export default function ProfilePicture({ username, setShow, pRef, photos }) {
+  const popup = useRef(null);
+  const { user } = useSelector((state) => ({ ...state }));
+  useClickOutide(popup, () => setShow(false));
   const refInput = useRef(null);
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
@@ -17,21 +21,16 @@ export default function ProfilePicture({ setShow }) {
       setError(`${file.name} format is not supported.`);
       return;
     } else if (file.size > 1024 * 1024 * 5) {
-      console.log("errorr.......file size is tooo big");
       setError(`${file.name} is too large max 5mb allowed.`);
       return;
     }
+
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (event) => {
       setImage(event.target.result);
     };
   };
-
-  const popup = useRef(null);
-  useClickOutide(popup, () => {
-    setShow(false);
-  });
   return (
     <div className="blur">
       <input
@@ -41,12 +40,9 @@ export default function ProfilePicture({ setShow }) {
         onChange={handleImage}
         accept="image/jpeg,image/png,image/webp,image/gif"
       />
-      <div className="postBox pictureBox">
+      <div className="postBox pictureBox" ref={popup}>
         <div className="box_header">
-          <div
-            className="small_circle"
-            onClick={() => setShow((prev) => !prev)}
-          >
+          <div className="small_circle" onClick={() => setShow(false)}>
             <i className="exit_icon"></i>
           </div>
           <span>Update profile picture</span>
@@ -74,14 +70,46 @@ export default function ProfilePicture({ setShow }) {
             </button>
           </div>
         )}
-        <div className="old_pictures_wrap"></div>
+        <div className="old_pictures_wrap scrollbar">
+          <h4>your profile pictures</h4>
+          <div className="old_pictures">
+            {photos
+              .filter(
+                (img) => img.folder === `${user.username}/profile_pictures`
+              )
+              .map((photo) => (
+                <img
+                  src={photo.secure_url}
+                  key={photo.public_id}
+                  alt=""
+                  onClick={() => setImage(photo.secure_url)}
+                />
+              ))}
+          </div>
+          <h4>other pictures</h4>
+          <div className="old_pictures">
+            {photos
+              .filter(
+                (img) => img.folder !== `${user.username}/profile_pictures`
+              )
+              .map((photo) => (
+                <img
+                  src={photo.secure_url}
+                  key={photo.public_id}
+                  alt=""
+                  onClick={() => setImage(photo.secure_url)}
+                />
+              ))}
+          </div>
+        </div>
       </div>
       {image && (
         <UpdateProfilePicture
           setImage={setImage}
           image={image}
-          setError={setError}
           setShow={setShow}
+          setError={setError}
+          pRef={pRef}
         />
       )}
     </div>

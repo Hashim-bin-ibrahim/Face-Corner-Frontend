@@ -13,7 +13,7 @@ export default function Messenger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState("");
   const [messages, setMessages] = useState(null);
-  const socket = useRef(io(process.env.SOCKET_URL));
+  const socket = useRef(io("ws://localhost:9000"));
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -23,7 +23,8 @@ export default function Messenger() {
   const { user } = useSelector((state) => ({ ...state }));
 
   useEffect(() => {
-    socket.current = io(process.env.SOCKET_URL);
+    socket.current = io("ws://localhost:9000");
+
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
@@ -73,6 +74,7 @@ export default function Messenger() {
         console.log(err);
       }
     };
+
     getMessages();
   }, [currentChat]);
 
@@ -81,6 +83,7 @@ export default function Messenger() {
   }, [messages]);
 
   const handleSubmit = async (e) => {
+    console.log("enter button clicked...");
     // e.preventDefault();
     const message = {
       sender: user.id,
@@ -90,11 +93,13 @@ export default function Messenger() {
 
     const recieverId = currentChat.members.find((member) => member !== user.id);
     console.log("recieverId   :", recieverId);
+
     socket.current.emit("sendMessage", {
       senderId: user.id,
       recieverId,
       text: newMessage,
     });
+
     try {
       const res = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/message`,
@@ -108,8 +113,9 @@ export default function Messenger() {
   };
 
   const enterKey = (event) => {
-    if (event.key === "Enter" && event.code !== "ShiftRight") {
+    if (event.key === "Enter") {
       event.preventDefault();
+
       handleSubmit();
     }
   };

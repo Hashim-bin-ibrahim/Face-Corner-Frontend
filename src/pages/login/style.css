@@ -1,7 +1,7 @@
 /*-----Login---------*/
 
 .login_wrapper {
-  background: white;
+  background: #001935;
 }
 
 .blur {
@@ -33,15 +33,19 @@
 }
 .login_1 span {
   font-size: 20px;
+  color: white;
 }
 .login_1 h1 {
   font-size: 40px;
-  color: blue;
+  color: white;
   font-weight: 900;
   font-family: Impact;
 }
 .login_2 {
   text-align: center;
+}
+.login_2 a {
+  color: white;
 }
 .login_2_wrap {
   display: flex;

@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import NoInternetConnection from "./NoInternetConnection";
 const loginInfos = {
   email: "",
   password: "",
@@ -49,6 +50,7 @@ export default function LoginForm({ setVisible }) {
       navigate("/");
     } catch (error) {
       setLoading(false);
+      console.log("error", error.response.data.message);
       setError(error.response.data.message);
     }
   };
@@ -100,7 +102,9 @@ export default function LoginForm({ setVisible }) {
           <Link to="/forgot" className="forgot_password">
             Forgotten password?
           </Link>
-          {error && <div className="error_text">{error}</div>}
+          <NoInternetConnection>
+            {error && <div className="error_text">{error}</div>}
+          </NoInternetConnection>
           <div className="sign_splitter"></div>
           <button
             onClick={() => setVisible(true)}

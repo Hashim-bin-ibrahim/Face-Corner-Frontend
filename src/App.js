@@ -13,6 +13,7 @@ import axios from "axios";
 import Advertisements from "../src/pages/Advertisement/index";
 import Messenger from "./pages/Messenger/Messenger";
 import { PostsReducer } from "./functions/Reducers";
+import Weather from "./pages/Weather";
 
 function App() {
   const [visible, setVisible] = useState(false);
@@ -74,6 +75,7 @@ function App() {
             element={<Advertisements setNewPost={setNewPost} />}
             exact
           />
+          <Route path="/weather" element={<Weather />} exact />
           <Route
             path="/"
             element={<Home setVisible={setVisible} posts={posts} />}
